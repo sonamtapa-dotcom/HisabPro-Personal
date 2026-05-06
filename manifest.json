@@ -1,7 +1,7 @@
 {
   "name": "HisabPro Personal",
   "short_name": "HisabPro",
-  "description": "Offline installable personal finance app for income, expenses, and daily balance.",
+  "description": "Offline installable personal finance app.",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",

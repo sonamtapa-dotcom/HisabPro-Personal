@@ -1,140 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
-<meta name="theme-color" content="#13824f"/>
-<meta name="description" content="HisabPro Personal - offline installable finance app."/>
-<link rel="manifest" href="manifest.json"/>
-<link rel="apple-touch-icon" href="icons/icon-192.png"/>
-<title>HisabPro Personal V1.4.1</title>
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#13824f"><link rel="manifest" href="manifest.json"><link rel="apple-touch-icon" href="icons/icon-192.png">
+<title>HisabPro Personal V1.5</title>
 <style>
-:root{--bg:#f4f9ff;--card:#fff;--text:#172033;--muted:#667085;--line:#e5e7eb;--brand:#0b3a66;--green:#13824f;--red:#c24141;--gold:#d99a18;--danger:#dc2626;--soft:#eef8f2;--softred:#fff1f2;--shadow:0 8px 24px rgba(16,24,40,.08);--radius:18px}
-*{box-sizing:border-box;font-family:Inter,Segoe UI,Roboto,Arial,Noto Sans Devanagari,sans-serif}
-body{margin:0;background:var(--bg);color:var(--text);padding-bottom:36px}
-.wrap{max-width:720px;margin:0 auto;padding:14px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px;margin-bottom:14px}
-.splash{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;animation:fadeIn .8s ease}
-.app{display:none}
-.logo-img{width:150px;height:150px;border-radius:34px;box-shadow:0 18px 42px rgba(16,24,40,.18);animation:pop .8s ease}
-.brand-title{font-size:44px;font-weight:950;letter-spacing:-1px;color:var(--brand);margin:18px 0 4px;line-height:1}
-.brand-title span{color:var(--green)}
-.nepali{font-size:22px;color:var(--brand);font-weight:800;margin-bottom:18px}
-.install-btn{border:none;background:var(--green);color:white;border-radius:15px;padding:15px 26px;font-size:17px;font-weight:950;box-shadow:0 8px 18px rgba(19,130,79,.28);cursor:pointer;animation:pulse 2s infinite}
-.install-btn.secondary{background:white;color:var(--brand);border:1px solid var(--line);animation:none;margin-left:8px}
-.install-note{max-width:430px;margin:16px auto 0;color:var(--muted);font-size:14px;line-height:1.45}
-.footer-note{text-align:center;color:var(--muted);font-size:12px;margin-top:22px}
-.brandbar{display:flex;justify-content:space-between;gap:10px;align-items:center}
-.logo-small{width:58px;height:58px;border-radius:17px;box-shadow:0 10px 22px rgba(16,24,40,.12)}
-.title-small{font-size:23px;font-weight:950;color:var(--brand);line-height:1}.title-small span{color:var(--green)}
-.badge{display:inline-block;margin-top:5px;padding:4px 8px;border-radius:999px;background:var(--soft);color:var(--green);font-size:11px;font-weight:900}
-.status{font-size:12px;color:var(--muted);padding:8px 10px;border-radius:999px;background:#f8fafc;border:1px solid var(--line);display:inline-block;margin-top:8px}
-.lang-btn{width:auto;border:1px solid var(--line);background:white;color:var(--brand);padding:9px 11px;border-radius:12px;font-weight:900}
-h2{font-size:17px;margin:0 0 12px;border-left:5px solid var(--green);padding-left:10px}
-label{display:block;font-size:13px;font-weight:900;color:var(--muted);margin:9px 0 5px}
-input,select{width:100%;padding:13px 12px;border:1px solid var(--line);border-radius:13px;font-size:16px;background:white;color:var(--text)}
-input:focus,select:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 3px rgba(19,130,79,.12)}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
-.btn{border:none;border-radius:14px;padding:13px;font-weight:900;font-size:15px;cursor:pointer;width:100%;margin-top:11px}
-.btn-primary{background:var(--brand);color:white}.btn-green{background:var(--green);color:white}.btn-outline{background:white;color:var(--brand);border:1px solid var(--line)}.btn-danger{background:#fee2e2;color:var(--danger)}
-.stat{background:var(--soft);border:1px solid #d7f0e1;border-radius:15px;padding:11px;text-align:center}.stat.expense{background:var(--softred);border-color:#ffd7dc}.stat.net{background:white;border-color:var(--line)}
-.stat b{font-size:18px;color:var(--green);display:block}.stat.expense b{color:var(--red)}.stat.net b{color:var(--brand)}
-.stat span{font-size:10px;color:var(--muted);text-transform:uppercase;font-weight:900}
-.nav,.quick{display:flex;gap:8px;overflow-x:auto;white-space:nowrap;scrollbar-width:none}.nav::-webkit-scrollbar,.quick::-webkit-scrollbar{display:none}
-.nav button,.chip{width:auto;margin:0;padding:10px 12px;border-radius:999px;border:1px solid var(--line);background:white;color:var(--brand);font-weight:900;flex:0 0 auto}
-.nav button.active{background:var(--green);color:white;border-color:var(--green)}.quick{margin:8px -2px 2px;padding:2px 2px 8px}.chip{background:#f8fafc}
-.toggle{display:grid;grid-template-columns:1fr 1fr;gap:8px;background:#f8fafc;border:1px solid var(--line);border-radius:15px;padding:5px;margin-bottom:10px}
-.toggle button{margin:0;border:0;border-radius:11px;background:transparent;color:var(--muted);padding:11px;font-weight:950}
-.toggle button.active.exp{background:var(--brand);color:white}.toggle button.active.inc{background:var(--green);color:white}
-.entry,.summary-row{border-top:1px solid var(--line);padding:12px 0}.entry:first-child,.summary-row:first-child{border-top:none}
-.entry-top,.summary-head{display:flex;justify-content:space-between;gap:12px;font-weight:950}.entry-sub{font-size:13px;color:var(--muted);margin-top:3px}
-.smallbtn{width:auto;margin:8px 0 0;padding:8px 10px;border-radius:10px;font-size:12px}
-.section{display:none}.section.active{display:block}.income-text{color:var(--green)}.expense-text{color:var(--red)}
-@keyframes fadeIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}@keyframes pop{0%{transform:scale(.82)}60%{transform:scale(1.05)}100%{transform:scale(1)}}@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}
-@media(max-width:520px){.grid2{grid-template-columns:1fr}.grid3{grid-template-columns:repeat(3,1fr)}.brand-title{font-size:40px}.wrap{padding:12px}}
-</style>
-</head>
-<body>
-<div id="splash" class="splash">
-  <div>
-    <img src="icons/icon-512.png" class="logo-img" alt="HisabPro Icon"/>
-    <div class="brand-title">Hisab<span>Pro</span></div>
-    <div class="nepali">हिसाब प्रो</div>
-    <button id="installBtn" class="install-btn">Install App</button>
-    <button class="install-btn secondary" onclick="openApp()">Open App</button>
-    <div id="installNote" class="install-note">Open once online, install to home screen, then use offline.</div>
-    <div class="footer-note">© 2026 Sonam Tsering Gurung · HisabPro</div>
-  </div>
-</div>
-
-<div id="app" class="app">
+:root{--bg:#f4f9ff;--card:#fff;--text:#172033;--muted:#667085;--line:#e5e7eb;--brand:#0b3a66;--green:#13824f;--red:#c24141;--danger:#dc2626;--soft:#eef8f2;--softred:#fff1f2;--shadow:0 8px 24px rgba(16,24,40,.08);--radius:18px}
+*{box-sizing:border-box;font-family:Inter,Segoe UI,Roboto,Arial,Noto Sans Devanagari,sans-serif}body{margin:0;background:var(--bg);color:var(--text);padding-bottom:36px}.wrap{max-width:720px;margin:0 auto;padding:14px}.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px;margin-bottom:14px}.splash{position:fixed;inset:0;z-index:99;background:#f4f9ff;display:flex;align-items:center;justify-content:center;text-align:center;transition:.45s}.splash.hide{opacity:0;visibility:hidden}.splash img{width:132px;height:132px;border-radius:30px;box-shadow:0 18px 42px rgba(16,24,40,.18);animation:pop .8s}.splash h1{font-size:38px;margin:16px 0 4px;color:var(--brand)}.splash h1 span,.title span{color:var(--green)}.brand{display:flex;justify-content:space-between;gap:10px;align-items:center}.brand img{width:58px;height:58px;border-radius:17px;box-shadow:0 10px 22px rgba(16,24,40,.12)}.title{font-size:23px;font-weight:950;color:var(--brand);line-height:1}.nep{font-weight:900;color:var(--green);margin-top:2px}.badge,.status{display:inline-block;margin-top:6px;padding:5px 9px;border-radius:999px;background:var(--soft);color:var(--green);font-size:11px;font-weight:900}.status{background:#f8fafc;color:var(--muted);border:1px solid var(--line)}button{cursor:pointer}.lang{border:1px solid var(--line);background:#fff;color:var(--brand);padding:9px 11px;border-radius:12px;font-weight:900}h2{font-size:17px;margin:0 0 12px;border-left:5px solid var(--green);padding-left:10px}label{display:block;font-size:13px;font-weight:900;color:var(--muted);margin:9px 0 5px}input,select{width:100%;padding:13px 12px;border:1px solid var(--line);border-radius:13px;font-size:16px;background:white}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.btn{border:none;border-radius:14px;padding:13px;font-weight:900;font-size:15px;width:100%;margin-top:11px}.primary{background:var(--brand);color:white}.green{background:var(--green);color:white}.outline{background:white;color:var(--brand);border:1px solid var(--line)}.danger{background:#fee2e2;color:var(--danger)}.stat{background:var(--soft);border:1px solid #d7f0e1;border-radius:15px;padding:11px;text-align:center}.stat.exp{background:var(--softred);border-color:#ffd7dc}.stat.net{background:white;border-color:var(--line)}.stat b{font-size:18px;color:var(--green);display:block}.stat.exp b{color:var(--red)}.stat span{font-size:10px;color:var(--muted);text-transform:uppercase;font-weight:900}.nav,.quick{display:flex;gap:8px;overflow-x:auto;white-space:nowrap;scrollbar-width:none}.nav::-webkit-scrollbar,.quick::-webkit-scrollbar{display:none}.nav button,.chip{width:auto;margin:0;padding:10px 12px;border-radius:999px;border:1px solid var(--line);background:white;color:var(--brand);font-weight:900;flex:0 0 auto}.nav button.active{background:var(--green);color:#fff;border-color:var(--green)}.quick{margin:8px -2px 2px;padding:2px 2px 8px}.toggle{display:grid;grid-template-columns:1fr 1fr;gap:8px;background:#f8fafc;border:1px solid var(--line);border-radius:15px;padding:5px;margin-bottom:10px}.toggle button{border:0;border-radius:11px;background:transparent;color:var(--muted);padding:11px;font-weight:950}.toggle button.active.exp{background:var(--brand);color:white}.toggle button.active.inc{background:var(--green);color:white}.entry,.row{border-top:1px solid var(--line);padding:12px 0}.entry:first-child,.row:first-child{border-top:none}.top{display:flex;justify-content:space-between;gap:12px;font-weight:950}.sub{font-size:13px;color:var(--muted);margin-top:3px}.small{width:auto;margin:8px 0 0;padding:8px 10px;border-radius:10px;font-size:12px}.section{display:none}.section.active{display:block}.income{color:var(--green)}.expense{color:var(--red)}.foot{text-align:center;color:var(--muted);font-size:12px;margin-top:18px}@keyframes pop{0%{transform:scale(.82)}60%{transform:scale(1.05)}100%{transform:scale(1)}}@media(max-width:520px){.grid2{grid-template-columns:1fr}.grid3{grid-template-columns:repeat(3,1fr)}.wrap{padding:12px}}
+</style></head><body>
+<div id="splash" class="splash"><div><img src="icons/icon-512.png"><h1>Hisab<span>Pro</span></h1><div class="nep">हिसाब प्रो</div></div></div>
 <div class="wrap">
-  <div class="card">
-    <div class="brandbar">
-      <div style="display:flex;align-items:center;gap:12px">
-        <img src="icons/icon-192.png" class="logo-small" alt="HisabPro"/>
-        <div><div class="title-small">Hisab<span>Pro</span></div><div class="nepali" style="font-size:15px;margin:2px 0 0">हिसाब प्रो</div><div class="badge" data-i18n="mode">Personal / व्यक्तिगत</div><div class="status" id="offlineStatus">Offline ready</div></div>
-      </div>
-      <button class="lang-btn" onclick="toggleLang()" id="langBtn">नेपाली</button>
-    </div>
-  </div>
-  <div class="card"><div class="nav" id="topNav"><button class="active" onclick="showSection('dashboard')" data-i18n="navDashboard">Dashboard</button><button onclick="showSection('summary')" data-i18n="navSummary">Summary</button><button onclick="showSection('analysis')" data-i18n="navAnalysis">Analysis</button><button onclick="showSection('history')" data-i18n="navHistory">History</button><button onclick="showSection('export')" data-i18n="navExport">Export</button></div></div>
-
-  <div id="dashboard" class="section active"><div class="card"><h2 data-i18n="dashboard">Dashboard</h2><div class="grid3"><div class="stat"><span data-i18n="income">Income</span><b id="dashIncome">0</b></div><div class="stat expense"><span data-i18n="expense">Expense</span><b id="dashExpense">0</b></div><div class="stat net"><span data-i18n="netBalance">Net Balance</span><b id="dashNet">0</b></div></div></div>
-  <div class="card"><h2 data-i18n="addTransaction">Add Transaction</h2><div class="toggle"><button id="expenseToggle" class="active exp" onclick="setType('expense')" data-i18n="expense">Expense</button><button id="incomeToggle" onclick="setType('income')" data-i18n="income">Income</button></div><label id="whereLabel">Where Spent</label><input id="whereSpent" value="Local Store" onclick="this.select()" onfocus="this.select()"><label data-i18n="description">Description</label><input id="description" placeholder="Rice, salary, rent, restaurant..."><div class="quick" id="quickButtons"></div><div class="grid2"><div><label data-i18n="category">Category</label><select id="category"></select></div><div><label data-i18n="payment">Payment Type</label><select id="paymentType"></select></div></div><label data-i18n="amount">Amount (Rs.)</label><input type="number" id="amount" placeholder="0"><button class="btn btn-primary" id="saveBtn" onclick="addTransaction()" data-i18n="saveTransaction">Save Transaction</button></div></div>
-  <div id="summary" class="section"><div class="card"><h2 data-i18n="monthlySummary">Monthly Summary</h2><div class="grid2"><div class="stat"><span data-i18n="income">Income</span><b id="sumIncome">0</b></div><div class="stat expense"><span data-i18n="expense">Expense</span><b id="sumExpense">0</b></div></div><div class="stat net" style="margin-top:10px"><span data-i18n="netBalance">Net Balance</span><b id="sumNet">0</b></div><div id="summaryList" style="margin-top:12px"></div></div></div>
-  <div id="analysis" class="section"><div class="card"><h2 data-i18n="analysis">Spending Analysis</h2><div id="categoryBreakdown"></div></div></div>
-  <div id="history" class="section"><div class="card"><h2 data-i18n="history">History</h2><div id="historyList"></div></div></div>
-  <div id="export" class="section"><div class="card"><h2 data-i18n="export">Export</h2><button class="btn btn-outline" onclick="downloadCSV()" data-i18n="downloadCsv">Download CSV</button><button class="btn btn-outline" onclick="backupJSON()" data-i18n="backupJson">Backup JSON</button><button class="btn btn-danger" onclick="clearAll()" data-i18n="clearAll">Clear All Data</button></div></div>
-  <div class="footer-note">© 2026 Sonam Tsering Gurung · HisabPro</div>
+ <div class="card"><div class="brand"><div style="display:flex;align-items:center;gap:12px"><img src="icons/icon-192.png"><div><div class="title">Hisab<span>Pro</span></div><div class="nep">हिसाब प्रो</div><div class="badge" data-i18n="mode">Personal / व्यक्तिगत</div><div class="status" id="offlineStatus">Offline ready</div></div></div><button class="lang" onclick="toggleLang()" id="langBtn">नेपाली</button></div></div>
+ <div class="card"><div class="nav" id="topNav"><button class="active" onclick="showSection('dashboard')" data-i18n="navDashboard">Dashboard</button><button onclick="showSection('summary')" data-i18n="navSummary">Summary</button><button onclick="showSection('analysis')" data-i18n="navAnalysis">Analysis</button><button onclick="showSection('history')" data-i18n="navHistory">History</button><button onclick="showSection('export')" data-i18n="navExport">Export</button></div></div>
+ <div id="dashboard" class="section active"><div class="card"><h2 data-i18n="dashboard">Dashboard</h2><div class="grid3"><div class="stat"><span data-i18n="income">Income</span><b id="dashIncome">0</b></div><div class="stat exp"><span data-i18n="expense">Expense</span><b id="dashExpense">0</b></div><div class="stat net"><span data-i18n="netBalance">Net Balance</span><b id="dashNet">0</b></div></div></div>
+ <div class="card"><h2 data-i18n="addTransaction">Add Transaction</h2><div class="toggle"><button id="expenseToggle" class="active exp" onclick="setType('expense')" data-i18n="expense">Expense</button><button id="incomeToggle" onclick="setType('income')" data-i18n="income">Income</button></div><label id="whereLabel">Where Spent</label><input id="whereSpent" value="Local Store" onclick="this.select()" onfocus="this.select()"><label data-i18n="description">Description</label><input id="description" placeholder="Rice, salary, rent, restaurant..."><div class="quick" id="quickButtons"></div><div class="grid2"><div><label data-i18n="category">Category</label><select id="category"></select></div><div><label data-i18n="payment">Payment Type</label><select id="paymentType"></select></div></div><label data-i18n="amount">Amount (Rs.)</label><input type="number" id="amount" placeholder="0"><button class="btn primary" id="saveBtn" onclick="addTransaction()" data-i18n="saveTransaction">Save Transaction</button></div></div>
+ <div id="summary" class="section"><div class="card"><h2 data-i18n="monthlySummary">Monthly Summary</h2><div class="grid2"><div class="stat"><span data-i18n="income">Income</span><b id="sumIncome">0</b></div><div class="stat exp"><span data-i18n="expense">Expense</span><b id="sumExpense">0</b></div></div><div class="stat net" style="margin-top:10px"><span data-i18n="netBalance">Net Balance</span><b id="sumNet">0</b></div><div id="summaryList" style="margin-top:12px"></div></div></div>
+ <div id="analysis" class="section"><div class="card"><h2 data-i18n="analysis">Spending Analysis</h2><div id="categoryBreakdown"></div></div></div>
+ <div id="history" class="section"><div class="card"><h2 data-i18n="history">History</h2><div id="historyList"></div></div></div>
+ <div id="export" class="section"><div class="card"><h2 data-i18n="export">Export</h2><button class="btn outline" onclick="downloadCSV()" data-i18n="downloadCsv">Download CSV</button><button class="btn outline" onclick="backupJSON()" data-i18n="backupJson">Backup JSON</button><button class="btn danger" onclick="clearAll()" data-i18n="clearAll">Clear All Data</button></div></div>
+ <div class="foot">© 2026 Sonam Tsering Gurung · HisabPro</div>
 </div>
-</div>
-
 <script>
-let deferredPrompt=null;
-const installBtn=document.getElementById('installBtn'), installNote=document.getElementById('installNote');
-
-window.addEventListener('beforeinstallprompt',(e)=>{
-  e.preventDefault();
-  deferredPrompt=e;
-  installBtn.textContent='Install App';
-  installNote.textContent='Ready to install. Tap Install App.';
-});
-
-installBtn.addEventListener('click',async()=>{
-  if(deferredPrompt){
-    deferredPrompt.prompt();
-    const choice=await deferredPrompt.userChoice;
-    deferredPrompt=null;
-    installNote.textContent=choice.outcome==='accepted'?'App installed successfully.':'Install cancelled. You can try again from browser menu.';
-  }else{
-    installNote.innerHTML='Install prompt not available yet. On phone: Chrome menu ⋮ → <b>Add to Home screen</b> / <b>Install app</b>.';
-  }
-});
-
-window.addEventListener('appinstalled',()=>{installNote.textContent='HisabPro installed on your device.';});
-
-function openApp(){document.getElementById('splash').style.display='none';document.getElementById('app').style.display='block';}
-
+window.addEventListener('load',()=>setTimeout(()=>document.getElementById('splash').classList.add('hide'),1000));
 const EXP=[["Grocery","किराना"],["Restaurant","रेस्टुरेन्ट"],["Rent","भाडा"],["Utilities","सुविधा खर्च"],["Electricity","बिजुली"],["Water","पानी"],["Internet","इन्टरनेट"],["Transport","यातायात"],["Dining","खाना / खाजा"],["Health","स्वास्थ्य"],["Education","शिक्षा"],["Appliances","उपकरण"],["Supplies","सामान / सप्लाइज"],["Family / Kids","परिवार / बालबालिका"],["Personal","व्यक्तिगत"],["Other","अन्य"]].map(([en,np])=>({en,np}));
 const INC=[["Salary","तलब"],["Business","व्यवसाय"],["Rent Income","भाडा आम्दानी"],["Allowance","भत्ता"],["Gift","उपहार"],["Savings Return","बचत फिर्ता"],["Other Income","अन्य आम्दानी"]].map(([en,np])=>({en,np}));
 const PAY=[["Cash","नगद"],["Bank","बैंक"],["eSewa","ई-सेवा"],["Khalti","खल्ती"],["Card","कार्ड"],["Other","अन्य"]].map(([en,np])=>({en,np}));
 const QEXP=[["Grocery","किराना","Grocery"],["Taxi","ट्याक्सी","Transport"],["Tea / Snacks","चिया / खाजा","Dining"],["Restaurant","रेस्टुरेन्ट","Restaurant"],["Medicine","औषधि","Health"],["Supplies","सामान","Supplies"]].map(([en,np,cat])=>({en,np,cat}));
 const QINC=[["Salary","तलब","Salary"],["Business","व्यवसाय","Business"],["Rent Income","भाडा आम्दानी","Rent Income"],["Allowance","भत्ता","Allowance"],["Gift","उपहार","Gift"]].map(([en,np,cat])=>({en,np,cat}));
-const KEY="hisabpro_personal_transactions_v141";let lang=localStorage.getItem("hisabpro_lang")||"en",type="expense";
+const KEY="hisabpro_personal_transactions_v15";let lang=localStorage.getItem("hisabpro_lang")||"en",type="expense";
 const T={en:{mode:"Personal / व्यक्तिगत",navDashboard:"Dashboard",navSummary:"Summary",navAnalysis:"Analysis",navHistory:"History",navExport:"Export",dashboard:"Dashboard",income:"Income",expense:"Expense",netBalance:"Net Balance",addTransaction:"Add Transaction",whereSpent:"Where Spent",whereIncome:"Income Source",description:"Description",category:"Category",payment:"Payment Type",amount:"Amount (Rs.)",saveTransaction:"Save Transaction",monthlySummary:"Monthly Summary",analysis:"Spending Analysis",history:"History",export:"Export",downloadCsv:"Download CSV",backupJson:"Backup JSON",clearAll:"Clear All Data",no:"No transactions yet.",fill:"Please fill all required fields.",clear:"Clear all personal transaction data?",delete:"Delete",month:"This Month",online:"Online · Offline ready",offline:"Offline mode"},np:{mode:"व्यक्तिगत",navDashboard:"ड्यासबोर्ड",navSummary:"सारांश",navAnalysis:"विश्लेषण",navHistory:"इतिहास",navExport:"एक्सपोर्ट",dashboard:"ड्यासबोर्ड",income:"आम्दानी",expense:"खर्च",netBalance:"बाँकी रकम",addTransaction:"लेनदेन थप्नुहोस्",whereSpent:"कहाँ खर्च भयो",whereIncome:"आम्दानी स्रोत",description:"विवरण",category:"प्रकार",payment:"भुक्तानी प्रकार",amount:"रकम (रु.)",saveTransaction:"लेनदेन सुरक्षित गर्नुहोस्",monthlySummary:"मासिक सारांश",analysis:"खर्च विश्लेषण",history:"इतिहास",export:"एक्सपोर्ट",downloadCsv:"CSV डाउनलोड गर्नुहोस्",backupJson:"JSON ब्याकअप",clearAll:"सबै डाटा हटाउनुहोस्",no:"अहिलेसम्म कुनै लेनदेन छैन।",fill:"कृपया आवश्यक विवरण भर्नुहोस्।",clear:"सबै व्यक्तिगत लेनदेन डाटा हटाउने?",delete:"हटाउनुहोस्",month:"यो महिना",online:"अनलाइन · अफलाइन तयार",offline:"अफलाइन मोड"}};
 function label(list,val){let x=list.find(i=>i.en===val);return x?x[lang]:val}function money(n){return Number(n||0).toLocaleString("en-NP",{maximumFractionDigits:0})}function today(){return new Date().toISOString().slice(0,10)}function month(){return new Date().toISOString().slice(0,7)}function load(){return JSON.parse(localStorage.getItem(KEY)||"[]")}function save(d){localStorage.setItem(KEY,JSON.stringify(d))}
 function showSection(id){document.querySelectorAll(".section").forEach(s=>s.classList.remove("active"));document.getElementById(id).classList.add("active");document.querySelectorAll("#topNav button").forEach(b=>b.classList.remove("active"));document.querySelectorAll("#topNav button")[{dashboard:0,summary:1,analysis:2,history:3,export:4}[id]].classList.add("active");scrollTo({top:0,behavior:"smooth"})}
 function populate(){let cats=type==="expense"?EXP:INC;category.innerHTML=cats.map(c=>`<option value="${c.en}">${c[lang]}</option>`).join("");paymentType.innerHTML=PAY.map(p=>`<option value="${p.en}">${p[lang]}</option>`).join("");let q=type==="expense"?QEXP:QINC;quickButtons.innerHTML=q.map(x=>`<button class="chip" onclick="quick('${x.en}','${x.cat}')">${x[lang]}</button>`).join("")}
 function applyLang(){document.querySelectorAll("[data-i18n]").forEach(el=>el.textContent=T[lang][el.dataset.i18n]||el.textContent);langBtn.textContent=lang==="en"?"नेपाली":"English";populate();updateType();status()}function toggleLang(){lang=lang==="en"?"np":"en";localStorage.setItem("hisabpro_lang",lang);applyLang();render()}
-function setType(t){type=t;populate();updateType()}function updateType(){expenseToggle.classList.toggle("active",type==="expense");incomeToggle.classList.toggle("active",type==="income");saveBtn.className=type==="income"?"btn btn-green":"btn btn-primary";whereLabel.textContent=type==="income"?T[lang].whereIncome:T[lang].whereSpent;whereSpent.value=type==="income"?(lang==="np"?"आम्दानी स्रोत":"Income Source"):(lang==="np"?"स्थानीय पसल":"Local Store")}
+function setType(t){type=t;populate();updateType()}function updateType(){expenseToggle.classList.toggle("active",type==="expense");incomeToggle.classList.toggle("active",type==="income");saveBtn.className=type==="income"?"btn green":"btn primary";whereLabel.textContent=type==="income"?T[lang].whereIncome:T[lang].whereSpent;whereSpent.value=type==="income"?(lang==="np"?"आम्दानी स्रोत":"Income Source"):(lang==="np"?"स्थानीय पसल":"Local Store")}
 function quick(item,cat){let q=type==="expense"?QEXP:QINC;description.value=lang==="np"?(q.find(x=>x.en===item)?.np||item):item;category.value=cat}
 function addTransaction(){let tx={id:Date.now(),type,date:today(),time:new Date().toLocaleTimeString([],{hour:"2-digit",minute:"2-digit"}),place:whereSpent.value.trim(),description:description.value.trim(),category:category.value,payment:paymentType.value,amount:Number(amount.value||0)};if(!tx.description||!tx.amount)return alert(T[lang].fill);let d=load();d.push(tx);save(d);description.value="";amount.value="";updateType();render()}
 function del(id){save(load().filter(x=>x.id!==id));render()}function totals(){let m=month(),data=load().filter(x=>x.date&&x.date.slice(0,7)===m),inc=data.filter(x=>x.type==="income").reduce((s,x)=>s+x.amount,0),exp=data.filter(x=>x.type==="expense").reduce((s,x)=>s+x.amount,0);return{data,inc,exp,net:inc-exp}}
-function render(){let all=load(),t=totals();dashIncome.textContent=sumIncome.textContent=money(t.inc);dashExpense.textContent=sumExpense.textContent=money(t.exp);dashNet.textContent=sumNet.textContent=money(t.net);dashNet.style.color=sumNet.style.color=t.net>=0?"var(--green)":"var(--red)";summaryList.innerHTML=`<div class="summary-row"><div class="summary-head"><span>${T[lang].month}</span><span>${month()}</span></div><div class="entry-sub">${T[lang].income}: ${t.data.filter(x=>x.type==="income").length} · ${T[lang].expense}: ${t.data.filter(x=>x.type==="expense").length}</div></div>`;let cats={};t.data.filter(x=>x.type==="expense").forEach(x=>cats[x.category]=(cats[x.category]||0)+x.amount);categoryBreakdown.innerHTML=Object.keys(cats).length?Object.entries(cats).sort((a,b)=>b[1]-a[1]).map(([c,v])=>`<div class="summary-row"><div class="summary-head"><span>${label(EXP,c)}</span><span>रु. ${money(v)}</span></div></div>`).join(""):`<div class="entry-sub">${T[lang].no}</div>`;historyList.innerHTML=all.length?all.slice().reverse().map(x=>{let list=x.type==="income"?INC:EXP,cls=x.type==="income"?"income-text":"expense-text",sg=x.type==="income"?"+":"-";return`<div class="entry"><div class="entry-top"><span>${x.description}</span><span class="${cls}">${sg} रु. ${money(x.amount)}</span></div><div class="entry-sub">${x.place} • ${label(list,x.category)} • ${label(PAY,x.payment)} • ${x.date} ${x.time}</div><button class="btn btn-danger smallbtn" onclick="del(${x.id})">${T[lang].delete}</button></div>`}).join(""):`<div class="entry-sub">${T[lang].no}</div>`}
-function blob(content,name,type){let b=new Blob([content],{type}),a=document.createElement("a");a.href=URL.createObjectURL(b);a.download=name;a.click()}function downloadCSV(){let rows=[["Date","Time","Type","Place/Source","Description","Category","Payment Type","Amount"]];load().forEach(x=>rows.push([x.date,x.time,x.type,x.place,x.description,x.category,x.payment,x.amount]));blob(rows.map(r=>r.map(x=>`"${String(x).replaceAll('"','""')}"`).join(",")).join("\n"),"HisabPro_Personal_V1_4_1_Transactions.csv","text/csv")}function backupJSON(){blob(JSON.stringify({app:"HisabPro Personal",version:"1.4.1",transactions:load()},null,2),"HisabPro_Backup.json","application/json")}function clearAll(){if(confirm(T[lang].clear)){localStorage.removeItem(KEY);render()}}function status(){offlineStatus.textContent=navigator.onLine?T[lang].online:T[lang].offline}addEventListener("online",status);addEventListener("offline",status);
+function render(){let all=load(),t=totals();dashIncome.textContent=sumIncome.textContent=money(t.inc);dashExpense.textContent=sumExpense.textContent=money(t.exp);dashNet.textContent=sumNet.textContent=money(t.net);dashNet.style.color=sumNet.style.color=t.net>=0?"var(--green)":"var(--red)";summaryList.innerHTML=`<div class="row"><div class="top"><span>${T[lang].month}</span><span>${month()}</span></div><div class="sub">${T[lang].income}: ${t.data.filter(x=>x.type==="income").length} · ${T[lang].expense}: ${t.data.filter(x=>x.type==="expense").length}</div></div>`;let cats={};t.data.filter(x=>x.type==="expense").forEach(x=>cats[x.category]=(cats[x.category]||0)+x.amount);categoryBreakdown.innerHTML=Object.keys(cats).length?Object.entries(cats).sort((a,b)=>b[1]-a[1]).map(([c,v])=>`<div class="row"><div class="top"><span>${label(EXP,c)}</span><span>रु. ${money(v)}</span></div></div>`).join(""):`<div class="sub">${T[lang].no}</div>`;historyList.innerHTML=all.length?all.slice().reverse().map(x=>{let list=x.type==="income"?INC:EXP,cls=x.type==="income"?"income":"expense",sg=x.type==="income"?"+":"-";return`<div class="entry"><div class="top"><span>${x.description}</span><span class="${cls}">${sg} रु. ${money(x.amount)}</span></div><div class="sub">${x.place} • ${label(list,x.category)} • ${label(PAY,x.payment)} • ${x.date} ${x.time}</div><button class="btn danger small" onclick="del(${x.id})">${T[lang].delete}</button></div>`}).join(""):`<div class="sub">${T[lang].no}</div>`}
+function blob(content,name,type){let b=new Blob([content],{type}),a=document.createElement("a");a.href=URL.createObjectURL(b);a.download=name;a.click()}function downloadCSV(){let rows=[["Date","Time","Type","Place/Source","Description","Category","Payment Type","Amount"]];load().forEach(x=>rows.push([x.date,x.time,x.type,x.place,x.description,x.category,x.payment,x.amount]));blob(rows.map(r=>r.map(x=>`"${String(x).replaceAll('"','""')}"`).join(",")).join("\n"),"HisabPro_Personal_V1_5_Transactions.csv","text/csv")}function backupJSON(){blob(JSON.stringify({app:"HisabPro Personal",version:"1.5",transactions:load()},null,2),"HisabPro_Backup.json","application/json")}function clearAll(){if(confirm(T[lang].clear)){localStorage.removeItem(KEY);render()}}function status(){offlineStatus.textContent=navigator.onLine?T[lang].online:T[lang].offline}addEventListener("online",status);addEventListener("offline",status);
 if("serviceWorker"in navigator){addEventListener("load",()=>navigator.serviceWorker.register("./service-worker.js"))}
 applyLang();render();
-</script>
-</body>
-</html>
+</script></body></html>
