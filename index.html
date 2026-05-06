@@ -1,25 +1,91 @@
+
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/><title>HisabPro Personal V1.3</title>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HisabPro Personal V1.4</title>
+<meta name="theme-color" content="#13824f">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
 <style>
-:root{--bg:#f3f6f8;--card:#fff;--text:#172033;--muted:#667085;--line:#e5e7eb;--brand:#0b3a66;--green:#13824f;--red:#c24141;--gold:#d99a18;--danger:#dc2626;--soft:#eef8f2;--softred:#fff1f2;--shadow:0 8px 24px rgba(16,24,40,.08);--radius:18px}*{box-sizing:border-box;font-family:Inter,Segoe UI,Roboto,Arial,Noto Sans Devanagari,sans-serif}body{margin:0;background:var(--bg);color:var(--text);padding-bottom:36px}.wrap{max-width:720px;margin:0 auto;padding:14px}.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px;margin-bottom:14px}.brandbar{display:flex;justify-content:space-between;gap:10px;align-items:center}.logoBox{width:62px;height:62px;border-radius:19px;background:linear-gradient(135deg,#071f3b,var(--brand));box-shadow:0 10px 22px rgba(11,58,102,.22);position:relative;display:grid;place-items:center;overflow:hidden;flex:0 0 auto}.receipt{width:39px;height:46px;background:white;border-radius:7px 7px 4px 4px;position:relative;box-shadow:0 2px 6px rgba(0,0,0,.18)}.receipt:after{content:"";position:absolute;bottom:-1px;left:0;width:100%;height:6px;background:linear-gradient(135deg,transparent 25%,white 25% 50%,transparent 50% 75%,white 75%);background-size:12px 6px}.receipt .hp{position:absolute;top:7px;left:6px;font-weight:900;font-size:11px;color:var(--brand)}.receipt .line{position:absolute;left:7px;right:7px;height:3px;background:#d7dee8;border-radius:10px}.receipt .l1{top:23px}.receipt .l2{top:31px;width:20px}.receipt .amt{position:absolute;right:6px;bottom:9px;color:var(--green);font-size:9px;font-weight:900}.coin{position:absolute;right:6px;bottom:7px;width:17px;height:17px;border-radius:50%;background:var(--gold);color:white;display:grid;place-items:center;font-size:9px;font-weight:900;border:2px solid #f3c457}.brand-title{font-size:24px;font-weight:950;letter-spacing:-.7px;color:var(--brand);line-height:1}.brand-title span{color:var(--green)}.nepali{font-size:16px;font-weight:900;color:var(--green);margin-top:3px}.badge{display:inline-block;margin-top:6px;padding:4px 8px;border-radius:999px;background:var(--soft);color:var(--green);font-size:11px;font-weight:900}.tag{font-size:12px;color:var(--muted);margin-top:5px}.lang-btn{width:auto;border:1px solid var(--line);background:white;color:var(--brand);padding:9px 11px;border-radius:12px;font-weight:900}h2{font-size:17px;margin:0 0 12px;border-left:5px solid var(--green);padding-left:10px}label{display:block;font-size:13px;font-weight:900;color:var(--muted);margin:9px 0 5px}input,select{width:100%;padding:13px 12px;border:1px solid var(--line);border-radius:13px;font-size:16px;background:white;color:var(--text)}input:focus,select:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 3px rgba(19,130,79,.12)}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.btn{border:none;border-radius:14px;padding:13px;font-weight:900;font-size:15px;cursor:pointer;width:100%;margin-top:11px}.btn-primary{background:var(--brand);color:#fff}.btn-green{background:var(--green);color:#fff}.btn-outline{background:white;color:var(--brand);border:1px solid var(--line)}.btn-danger{background:#fee2e2;color:var(--danger)}.stat{background:var(--soft);border:1px solid #d7f0e1;border-radius:15px;padding:11px;text-align:center}.stat.expense{background:var(--softred);border-color:#ffd7dc}.stat.net{background:white;border-color:var(--line)}.stat b{font-size:18px;color:var(--green);display:block}.stat.expense b{color:var(--red)}.stat.net b{color:var(--brand)}.stat span{font-size:10px;color:var(--muted);text-transform:uppercase;font-weight:900}.quick,.nav{display:flex;gap:8px;overflow-x:auto;white-space:nowrap;scrollbar-width:none}.quick{margin:8px -2px 2px;padding:2px 2px 8px}.quick::-webkit-scrollbar,.nav::-webkit-scrollbar{display:none}.chip{width:auto;margin:0;padding:9px 12px;border-radius:999px;background:#f8fafc;border:1px solid var(--line);color:var(--brand);font-weight:900;flex:0 0 auto}.nav button{width:auto;margin:0;padding:10px 12px;border-radius:999px;border:1px solid var(--line);background:white;color:var(--brand);font-weight:900;flex:0 0 auto}.nav button.active{background:var(--green);color:white;border-color:var(--green)}.toggle{display:grid;grid-template-columns:1fr 1fr;gap:8px;background:#f8fafc;border:1px solid var(--line);border-radius:15px;padding:5px;margin-bottom:10px}.toggle button{margin:0;border:0;border-radius:11px;background:transparent;color:var(--muted);padding:11px;font-weight:950}.toggle button.active.exp{background:var(--brand);color:#fff}.toggle button.active.inc{background:var(--green);color:#fff}.entry,.summary-row{border-top:1px solid var(--line);padding:12px 0}.entry:first-child,.summary-row:first-child{border-top:none}.entry-top,.summary-head{display:flex;justify-content:space-between;gap:12px;font-weight:950}.entry-sub{font-size:13px;color:var(--muted);margin-top:3px}.smallbtn{width:auto;margin:8px 0 0;padding:8px 10px;border-radius:10px;font-size:12px}.footer-note{text-align:center;color:var(--muted);font-size:12px;margin-top:18px}.section{display:none}.section.active{display:block}.income-text{color:var(--green)}.expense-text{color:var(--red)}@media(max-width:520px){.grid2{grid-template-columns:1fr}.grid3{grid-template-columns:repeat(3,1fr)}.brand-title{font-size:22px}.logoBox{width:58px;height:58px}.wrap{padding:12px}}
-</style></head><body><div class="wrap">
-<div class="card"><div class="brandbar"><div style="display:flex;align-items:center;gap:12px"><div class="logoBox"><div class="receipt"><div class="hp">Hisab</div><div class="line l1"></div><div class="line l2"></div><div class="amt">Rs.</div></div><div class="coin">रु</div></div><div><div class="brand-title">Hisab<span>Pro</span></div><div class="nepali">हिसाब प्रो</div><div class="badge" data-i18n="mode">Personal / व्यक्तिगत</div><div class="tag" data-i18n="tag">Income. Expense. Daily Balance.</div></div></div><button class="lang-btn" onclick="toggleLang()" id="langBtn">नेपाली</button></div></div>
-<div class="card"><div class="nav" id="topNav"><button class="active" onclick="showSection('dashboard')" data-i18n="navDashboard">Dashboard</button><button onclick="showSection('summary')" data-i18n="navSummary">Summary</button><button onclick="showSection('analysis')" data-i18n="navAnalysis">Analysis</button><button onclick="showSection('history')" data-i18n="navHistory">History</button><button onclick="showSection('export')" data-i18n="navExport">Export</button></div></div>
-<div id="dashboard" class="section active"><div class="card"><h2 data-i18n="dashboard">Dashboard</h2><div class="grid3"><div class="stat"><span data-i18n="income">Income</span><b id="dashIncome">0</b></div><div class="stat expense"><span data-i18n="expense">Expense</span><b id="dashExpense">0</b></div><div class="stat net"><span data-i18n="netBalance">Net Balance</span><b id="dashNet">0</b></div></div></div><div class="card"><h2 data-i18n="addTransaction">Add Transaction</h2><div class="toggle"><button id="expenseToggle" class="active exp" onclick="setType('expense')" data-i18n="expense">Expense</button><button id="incomeToggle" onclick="setType('income')" data-i18n="income">Income</button></div><label data-i18n="whereSpent" id="whereLabel">Where Spent</label><input id="whereSpent" value="Local Store" onclick="this.select()" onfocus="this.select()" data-ph-en="Local Store" data-ph-np="स्थानीय पसल" placeholder="Local Store"><label data-i18n="description">Description</label><input id="description" data-ph-en="Rice, salary, rent, restaurant..." data-ph-np="चामल, तलब, भाडा, रेस्टुरेन्ट..." placeholder="Rice, salary, rent, restaurant..."><div class="quick" id="quickButtons"></div><div class="grid2"><div><label data-i18n="category">Category</label><select id="category"></select></div><div><label data-i18n="payment">Payment Type</label><select id="paymentType"></select></div></div><label data-i18n="amount">Amount (Rs.)</label><input type="number" id="amount" data-ph-en="0" data-ph-np="०" placeholder="0"><button class="btn btn-primary" id="saveBtn" onclick="addTransaction()" data-i18n="saveTransaction">Save Transaction</button></div></div>
-<div id="summary" class="section"><div class="card"><h2 data-i18n="monthlySummary">Monthly Summary</h2><div class="grid2"><div class="stat"><span data-i18n="income">Income</span><b id="sumIncome">0</b></div><div class="stat expense"><span data-i18n="expense">Expense</span><b id="sumExpense">0</b></div></div><div class="stat net" style="margin-top:10px"><span data-i18n="netBalance">Net Balance</span><b id="sumNet">0</b></div><div id="summaryList" style="margin-top:12px"></div></div></div><div id="analysis" class="section"><div class="card"><h2 data-i18n="analysis">Spending Analysis</h2><div id="categoryBreakdown"></div></div></div><div id="history" class="section"><div class="card"><h2 data-i18n="history">History</h2><div id="historyList"></div></div></div><div id="export" class="section"><div class="card"><h2 data-i18n="export">Export</h2><button class="btn btn-outline" onclick="downloadCSV()" data-i18n="downloadCsv">Download CSV</button><button class="btn btn-danger" onclick="clearAll()" data-i18n="clearAll">Clear All Data</button></div></div><div class="footer-note">© 2026 Sonam Tsering Gurung · HisabPro</div></div>
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:#f4f9ff;
+color:#123;
+display:flex;
+align-items:center;
+justify-content:center;
+height:100vh;
+overflow:hidden;
+}
+.splash{
+text-align:center;
+animation:fadeIn 1.2s ease;
+}
+.logo{
+width:140px;
+height:140px;
+border-radius:30px;
+box-shadow:0 15px 35px rgba(0,0,0,0.15);
+animation:pop 1s ease;
+}
+h1{
+margin:20px 0 5px;
+font-size:42px;
+color:#0b3a66;
+}
+h1 span{color:#13824f;}
+p{
+font-size:20px;
+color:#456;
+}
+.install{
+margin-top:25px;
+display:inline-block;
+padding:14px 24px;
+background:#13824f;
+color:white;
+border-radius:14px;
+font-weight:bold;
+animation:pulse 2s infinite;
+}
+.footer{
+position:absolute;
+bottom:15px;
+font-size:12px;
+color:#666;
+}
+@keyframes fadeIn{
+from{opacity:0;transform:translateY(15px);}
+to{opacity:1;transform:translateY(0);}
+}
+@keyframes pop{
+0%{transform:scale(0.8);}
+60%{transform:scale(1.05);}
+100%{transform:scale(1);}
+}
+@keyframes pulse{
+0%{transform:scale(1);}
+50%{transform:scale(1.05);}
+100%{transform:scale(1);}
+}
+</style>
+</head>
+<body>
+<div class="splash">
+<img src="icons/icon-512.png" class="logo">
+<h1>Hisab<span>Pro</span></h1>
+<p>हिसाब प्रो</p>
+<div class="install">Offline Ready • Installable App</div>
+</div>
+<div class="footer">© 2026 Sonam Tsering Gurung · HisabPro</div>
+
 <script>
-const EXPENSE_CATEGORIES=[{en:"Grocery",np:"किराना"},{en:"Restaurant",np:"रेस्टुरेन्ट"},{en:"Rent",np:"भाडा"},{en:"Utilities",np:"सुविधा खर्च"},{en:"Electricity",np:"बिजुली"},{en:"Water",np:"पानी"},{en:"Internet",np:"इन्टरनेट"},{en:"Transport",np:"यातायात"},{en:"Dining",np:"खाना / खाजा"},{en:"Health",np:"स्वास्थ्य"},{en:"Education",np:"शिक्षा"},{en:"Appliances",np:"उपकरण"},{en:"Supplies",np:"सामान / सप्लाइज"},{en:"Family / Kids",np:"परिवार / बालबालिका"},{en:"Personal",np:"व्यक्तिगत"},{en:"Other",np:"अन्य"}];
-const INCOME_CATEGORIES=[{en:"Salary",np:"तलब"},{en:"Business",np:"व्यवसाय"},{en:"Rent Income",np:"भाडा आम्दानी"},{en:"Allowance",np:"भत्ता"},{en:"Gift",np:"उपहार"},{en:"Savings Return",np:"बचत फिर्ता"},{en:"Other Income",np:"अन्य आम्दानी"}];
-const PAYMENTS=[{en:"Cash",np:"नगद"},{en:"Bank",np:"बैंक"},{en:"eSewa",np:"ई-सेवा"},{en:"Khalti",np:"खल्ती"},{en:"Card",np:"कार्ड"},{en:"Other",np:"अन्य"}];
-const QUICK_EXP=[{en:"Grocery",np:"किराना",cat:"Grocery"},{en:"Taxi",np:"ट्याक्सी",cat:"Transport"},{en:"Tea / Snacks",np:"चिया / खाजा",cat:"Dining"},{en:"Restaurant",np:"रेस्टुरेन्ट",cat:"Restaurant"},{en:"Medicine",np:"औषधि",cat:"Health"},{en:"Supplies",np:"सामान",cat:"Supplies"}];
-const QUICK_INC=[{en:"Salary",np:"तलब",cat:"Salary"},{en:"Business",np:"व्यवसाय",cat:"Business"},{en:"Rent Income",np:"भाडा आम्दानी",cat:"Rent Income"},{en:"Allowance",np:"भत्ता",cat:"Allowance"},{en:"Gift",np:"उपहार",cat:"Gift"}];
-const LS_TX="hisabpro_personal_transactions_v13";let lang=localStorage.getItem("hisabpro_lang")||"en";let currentType="expense";
-const T={en:{mode:"Personal / व्यक्तिगत",tag:"Income. Expense. Daily Balance.",navDashboard:"Dashboard",navSummary:"Summary",navAnalysis:"Analysis",navHistory:"History",navExport:"Export",dashboard:"Dashboard",income:"Income",expense:"Expense",netBalance:"Net Balance",addTransaction:"Add Transaction",whereSpent:"Where Spent",whereIncome:"Income Source",description:"Description",category:"Category",payment:"Payment Type",amount:"Amount (Rs.)",saveTransaction:"Save Transaction",monthlySummary:"Monthly Summary",analysis:"Spending Analysis",history:"History",export:"Export",downloadCsv:"Download CSV",clearAll:"Clear All Data",noTransactions:"No transactions yet.",fill:"Please fill all required fields.",confirmClear:"Clear all personal transaction data?",delete:"Delete",thisMonth:"This Month"},np:{mode:"व्यक्तिगत",tag:"आम्दानी। खर्च। दैनिक हिसाब।",navDashboard:"ड्यासबोर्ड",navSummary:"सारांश",navAnalysis:"विश्लेषण",navHistory:"इतिहास",navExport:"एक्सपोर्ट",dashboard:"ड्यासबोर्ड",income:"आम्दानी",expense:"खर्च",netBalance:"बाँकी रकम",addTransaction:"लेनदेन थप्नुहोस्",whereSpent:"कहाँ खर्च भयो",whereIncome:"आम्दानी स्रोत",description:"विवरण",category:"प्रकार",payment:"भुक्तानी प्रकार",amount:"रकम (रु.)",saveTransaction:"लेनदेन सुरक्षित गर्नुहोस्",monthlySummary:"मासिक सारांश",analysis:"खर्च विश्लेषण",history:"इतिहास",export:"एक्सपोर्ट",downloadCsv:"CSV डाउनलोड गर्नुहोस्",clearAll:"सबै डाटा हटाउनुहोस्",noTransactions:"अहिलेसम्म कुनै लेनदेन छैन।",fill:"कृपया आवश्यक विवरण भर्नुहोस्।",confirmClear:"सबै व्यक्तिगत लेनदेन डाटा हटाउने?",delete:"हटाउनुहोस्",thisMonth:"यो महिना"}};
-function labelOf(list,val){const item=list.find(x=>x.en===val);return item?item[lang]:val}function money(n){return Number(n||0).toLocaleString("en-NP",{maximumFractionDigits:0})}function todayKey(){return new Date().toISOString().slice(0,10)}function monthKey(d=new Date()){return d.toISOString().slice(0,7)}function loadTx(){return JSON.parse(localStorage.getItem(LS_TX)||"[]")}function saveTx(data){localStorage.setItem(LS_TX,JSON.stringify(data))}
-function showSection(id){document.querySelectorAll(".section").forEach(s=>s.classList.remove("active"));document.getElementById(id).classList.add("active");document.querySelectorAll("#topNav button").forEach(b=>b.classList.remove("active"));const map={dashboard:0,summary:1,analysis:2,history:3,export:4};document.querySelectorAll("#topNav button")[map[id]].classList.add("active");window.scrollTo({top:0,behavior:"smooth"})}
-function populate(){const cats=currentType==="expense"?EXPENSE_CATEGORIES:INCOME_CATEGORIES;category.innerHTML=cats.map(c=>`<option value="${c.en}">${c[lang]}</option>`).join("");paymentType.innerHTML=PAYMENTS.map(p=>`<option value="${p.en}">${p[lang]}</option>`).join("");const quick=currentType==="expense"?QUICK_EXP:QUICK_INC;quickButtons.innerHTML=quick.map(q=>`<button class="chip" onclick="quickItem('${q.en}','${q.cat}')">${q[lang]}</button>`).join("")}
-function applyLang(){document.documentElement.lang=lang==="np"?"ne":"en";document.querySelectorAll("[data-i18n]").forEach(el=>el.textContent=T[lang][el.dataset.i18n]||el.textContent);document.querySelectorAll("[data-ph-en]").forEach(el=>el.placeholder=lang==="np"?el.dataset.phNp:el.dataset.phEn);langBtn.textContent=lang==="en"?"नेपाली":"English";populate();updateTypeUI()}function toggleLang(){lang=lang==="en"?"np":"en";localStorage.setItem("hisabpro_lang",lang);applyLang();render()}function setType(type){currentType=type;populate();updateTypeUI()}function updateTypeUI(){expenseToggle.classList.toggle("active",currentType==="expense");incomeToggle.classList.toggle("active",currentType==="income");saveBtn.className=currentType==="income"?"btn btn-green":"btn btn-primary";whereLabel.textContent=currentType==="income"?T[lang].whereIncome:T[lang].whereSpent;whereSpent.value=currentType==="income"?(lang==="np"?"आम्दानी स्रोत":"Income Source"):(lang==="np"?"स्थानीय पसल":"Local Store")}
-function quickItem(item,cat){const quick=currentType==="expense"?QUICK_EXP:QUICK_INC;description.value=lang==="np"?(quick.find(q=>q.en===item)?.np||item):item;category.value=cat}function addTransaction(){const tx={id:Date.now(),type:currentType,date:todayKey(),time:new Date().toLocaleTimeString([],{hour:"2-digit",minute:"2-digit"}),place:whereSpent.value.trim()||(currentType==="expense"?"Local Store":"Income Source"),description:description.value.trim(),category:category.value,payment:paymentType.value,amount:Number(amount.value||0)};if(!tx.description||!tx.amount)return alert(T[lang].fill);const data=loadTx();data.push(tx);saveTx(data);description.value="";amount.value="";updateTypeUI();render()}function deleteTx(id){saveTx(loadTx().filter(e=>e.id!==id));render()}function totals(){const month=monthKey(),monthData=loadTx().filter(e=>e.date&&e.date.slice(0,7)===month),income=monthData.filter(e=>e.type==="income").reduce((s,e)=>s+e.amount,0),expense=monthData.filter(e=>e.type==="expense").reduce((s,e)=>s+e.amount,0);return{monthData,income,expense,net:income-expense}}
-function render(){const data=loadTx(),t=totals();dashIncome.textContent=money(t.income);dashExpense.textContent=money(t.expense);dashNet.textContent=money(t.net);sumIncome.textContent=money(t.income);sumExpense.textContent=money(t.expense);sumNet.textContent=money(t.net);sumNet.style.color=t.net>=0?"var(--green)":"var(--red)";dashNet.style.color=t.net>=0?"var(--green)":"var(--red)";const incomeCount=t.monthData.filter(e=>e.type==="income").length,expenseCount=t.monthData.filter(e=>e.type==="expense").length;summaryList.innerHTML=`<div class="summary-row"><div class="summary-head"><span>${T[lang].thisMonth}</span><span>${monthKey()}</span></div><div class="entry-sub">${T[lang].income}: ${incomeCount} · ${T[lang].expense}: ${expenseCount}</div></div>`;const catTotals={};t.monthData.filter(e=>e.type==="expense").forEach(e=>catTotals[e.category]=(catTotals[e.category]||0)+e.amount);categoryBreakdown.innerHTML=Object.keys(catTotals).length?Object.entries(catTotals).sort((a,b)=>b[1]-a[1]).map(([c,v])=>`<div class="summary-row"><div class="summary-head"><span>${labelOf(EXPENSE_CATEGORIES,c)}</span><span>रु. ${money(v)}</span></div></div>`).join(""):`<div class="entry-sub">${T[lang].noTransactions}</div>`;historyList.innerHTML=data.length?data.slice().reverse().map(e=>{const cats=e.type==="income"?INCOME_CATEGORIES:EXPENSE_CATEGORIES,cls=e.type==="income"?"income-text":"expense-text",sign=e.type==="income"?"+":"-";return `<div class="entry"><div class="entry-top"><span>${e.description}</span><span class="${cls}">${sign} रु. ${money(e.amount)}</span></div><div class="entry-sub">${e.place} • ${labelOf(cats,e.category)} • ${labelOf(PAYMENTS,e.payment)} • ${e.date} ${e.time}</div><button class="btn btn-danger smallbtn" onclick="deleteTx(${e.id})">${T[lang].delete}</button></div>`}).join(""):`<div class="entry-sub">${T[lang].noTransactions}</div>`}
-function downloadCSV(){const data=loadTx(),rows=[["Date","Time","Type","Place/Source","Description","Category","Payment Type","Amount"]];data.forEach(e=>rows.push([e.date,e.time,e.type,e.place,e.description,e.category,e.payment,e.amount]));const csv=rows.map(r=>r.map(x=>`"${String(x).replaceAll('"','""')}"`).join(",")).join("\n"),blob=new Blob([csv],{type:"text/csv;charset=utf-8"}),a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="HisabPro_Personal_V1_3_Transactions.csv";a.click()}function clearAll(){if(confirm(T[lang].confirmClear)){localStorage.removeItem(LS_TX);render()}}applyLang();render();
-</script></body></html>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('./service-worker.js');
+}
+</script>
+</body>
+</html>
