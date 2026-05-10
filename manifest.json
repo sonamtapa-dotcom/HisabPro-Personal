@@ -1,7 +1,7 @@
 {
   "name": "HisabPro Personal",
   "short_name": "HisabPro",
-  "description": "Offline installable personal finance app.",
+  "description": "Offline installable personal finance app with weekly analysis.",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
