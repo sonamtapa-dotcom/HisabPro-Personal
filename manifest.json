@@ -1,25 +1,20 @@
 {
-  "name": "HisabPro Personal",
+  "name": "HisabPro Personal V1.7.1",
   "short_name": "HisabPro",
-  "description": "Offline installable personal finance app with weekly analysis.",
   "start_url": "./index.html",
-  "scope": "./",
   "display": "standalone",
   "background_color": "#f4f9ff",
   "theme_color": "#13824f",
-  "orientation": "portrait-primary",
   "icons": [
     {
       "src": "icons/icon-192.png",
       "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "type": "image/png"
     },
     {
       "src": "icons/icon-512.png",
       "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "type": "image/png"
     }
   ]
 }
